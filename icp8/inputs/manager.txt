@@ -1,0 +1,10 @@
+manager1 employee1
+manager2 employee2
+manager3 employee3
+manager1 employee4
+manager2 employee5
+manager3 employee6
+manager3 employee7
+manager2 employee8
+manager3 employee9
+manager3 employee10
