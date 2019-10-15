@@ -8,7 +8,7 @@ object InvertedIndex {
     val sc = new SparkContext(conf)
 
     // Read file containing stopwords into a broadcast variable
-    val stopWordsInput = sc.textFile("inputs/shakespeare/*")
+    val stopWordsInput = sc.textFile("inputs/stopwords.txt")
     val stopWords = stopWordsInput.flatMap(x => x.split("\\r?\\n")).map(_.trim)
     val broadcastStopWords = sc.broadcast(stopWords.collect.toSet)
 

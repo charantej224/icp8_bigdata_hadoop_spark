@@ -7,7 +7,7 @@ object second {
     val conf = new SparkConf().setAppName("secondarysort").setMaster("local[*]")
     val sc = new SparkContext(conf)
 
-    val personRDD = sc.textFile("inputs/secondary_sort.txt")
+    val personRDD = sc.textFile("inputs/secondary_sort1.txt")
     val pairsRDD = personRDD.map(_.split(",")).map { k => (k(0), k(1)) }
 
     val numReducers = 2;
