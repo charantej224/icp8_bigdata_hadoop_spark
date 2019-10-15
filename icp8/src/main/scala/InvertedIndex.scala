@@ -11,7 +11,7 @@ object InvertedIndex {
     val stopWordsInput = sc.textFile("inputs/shakespeare/*")
     val stopWords = stopWordsInput.flatMap(x => x.split("\\r?\\n")).map(_.trim)
     val broadcastStopWords = sc.broadcast(stopWords.collect.toSet)
-    
+
 
     // Read input file and filter all stopwords
     sc.wholeTextFiles("inputs/shakespeare/").flatMap {
