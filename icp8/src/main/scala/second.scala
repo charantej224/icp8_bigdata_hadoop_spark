@@ -19,8 +19,6 @@ object second {
         list.map((label, _))
       }
     }
-
     resultRDD.saveAsTextFile("outputs/secondary_sort")
-
   }
 }
