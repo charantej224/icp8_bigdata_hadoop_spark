@@ -1,4 +1,4 @@
-import org.apache.spark.{SparkConf, SparkContext}
+import org.apache.spark.{HashPartitioner, SparkConf, SparkContext}
 
 object second {
 
@@ -8,7 +8,7 @@ object second {
     val sc = new SparkContext(conf)
 
     val personRDD = sc.textFile("inputs/secondary_sort1.txt")
-    val pairsRDD = personRDD.map(_.split(",")).map { k => (k(0), k(1)) }
+    val pairsRDD = personRDD.map(_.split(",")).map { k => (k(0), k(1)) }.partitionBy(new HashPartitioner(10))
 
     val numReducers = 2;
 
@@ -19,6 +19,6 @@ object second {
         list.map((label, _))
       }
     }
-    resultRDD.saveAsTextFile("outputs/secondary_sort")
+    resultRDD.saveAsTextFile("outputs/secondary_sort2")
   }
 }

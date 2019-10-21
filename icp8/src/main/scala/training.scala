@@ -11,7 +11,7 @@ object training {
 
     val data = sc.parallelize(Array("Charan Tej,Thota","Phil,Harrison","Brian,Langdon","Bill,Chadwick","Jeff, O'Toole"))
     val pairsRDD = data.map(_.split(",")).map { k => (k(0), k(1)) }
-    val numReducers = 2;
+    val numReducers = 1;
     pairsRDD.saveAsTextFile("pairsRDD")
     val listRDD = pairsRDD.groupByKey(numReducers).mapValues(iter => iter.toList.sortBy(r => r))
     listRDD.saveAsTextFile("listRDD")
